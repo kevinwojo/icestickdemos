@@ -1,4 +1,3 @@
-
 module top(input clk, output D1, output D2, output D3, output D4, output D5);
    
    reg ready = 0;
@@ -11,7 +10,16 @@ module top(input clk, output D1, output D2, output D3, output D4, output D5);
            if (divider == 12000000) 
              begin
                 divider <= 0;
-                rot <= {rot[2:0], rot[3]};
+                rot <= rot + 1;
+
+		if (rot < 4'b0100)
+                 begin
+                   flow <= 1;
+                 end
+                 else
+                  begin
+                   flow <= 0;
+		 end // rot
              end
            else 
              divider <= divider + 1;
@@ -19,7 +27,8 @@ module top(input clk, output D1, output D2, output D3, output D4, output D5);
       else 
         begin
            ready <= 1;
-           rot <= 4'b0101;
+           flow <= 0;
+           rot <= 4'b1111;
            divider <= 0;
         end
    end
@@ -28,5 +37,5 @@ module top(input clk, output D1, output D2, output D3, output D4, output D5);
    assign D2 = rot[1];
    assign D3 = rot[2];
    assign D4 = rot[3];
-   assign D5 = 1;
+   assign D5 = flow;
 endmodule // top
