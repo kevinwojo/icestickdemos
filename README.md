@@ -14,6 +14,13 @@ https://github.com/cseed/arachne-pnr/tree/master/examples/rot
 Compile, route, and place: `make`
 Spew onto the chip: `make install`
 
+[Pinout for the Icestick](http://www.pighixxx.com/test/2016/02/icestick-pinout/)
+
+### Setup for Simulation Workflow
+@TODO
+
+
+
 ## Project Log
 2016-02-13: Inital commit of PWM module. Need to set the other LED pins on the board to 0. Otherwise it works.
 I'd like to get this working with the option of a 'fade' up/down effect. I would also like to connect the Icestick to my PC via the UART. Probably have some sort of register that gets checked for ASCII codes representing different options. Python client.
